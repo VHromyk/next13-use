@@ -3,8 +3,8 @@ import {Metadata} from 'next';
 import Link from 'next/link';
 
 
-async function getData() {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {next: {revalidate: 60}})
+export async function getData() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts')
 
     return response.json()
 }
@@ -12,6 +12,8 @@ async function getData() {
 export const metadata: Metadata = {
     title: 'Blog | Next test',
 }
+
+export const revalidate = 10;
 
 
 export default async function Blog() {

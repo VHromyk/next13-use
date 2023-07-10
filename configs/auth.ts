@@ -5,8 +5,8 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 export const authConfig: AuthOptions = {
     providers: [
         GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_SECRET
+            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientSecret: process.env.GOOGLE_SECRET as string
         }),
         CredentialsProvider({
             name: "Email & Password",
@@ -17,7 +17,7 @@ export const authConfig: AuthOptions = {
             },
             async authorize(credentials, req) {
                 // Make request to database
-                const user = { id: "1", name: credentials.username, email: credentials.email }
+                const user = { id: "1", name: credentials?.username, email: credentials?.email }
 
                 if (user) {
                     return user

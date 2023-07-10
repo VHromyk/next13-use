@@ -8,9 +8,9 @@ import {redirect} from 'next/navigation';
 // Custom page Sign In
 
 export default async function SignIn() {
-    const session = await getServerSession(authConfig as any);
+    const session = await getServerSession(authConfig);
 
-    if(session && session?.user?.name) {
+    if(session && session.user && session.user.name) {
         redirect('/profile')
     }
 
